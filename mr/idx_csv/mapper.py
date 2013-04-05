@@ -1,3 +1,12 @@
+#-------------------------------------------------------------------------------
+# Name:        Mapper
+# Purpose:
+#
+# Author:      Initial Version Created on MIT 
+#              04/05/2013 - Alan del Rio - Parse IDX from IDOL
+#
+# Copyright:   (c) Hewlett Packard
+#-------------------------------------------------------------------------------
 #!/usr/bin/env python 
 import sys
 import re
