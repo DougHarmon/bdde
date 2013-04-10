@@ -73,4 +73,5 @@ def format(doc):
     if 'NEGATIVE_VIBE' in doc.fields:
         record['NEGATIVE_VIBE_TXT'] = doc.fields['NEGATIVE_VIBE']
 
-    return 'timestamp={0},utcOffset={1},location={2},lat={3},lon={4},lang={5},numberFollowers={6},numberStatuses={7},text={8},topic={9},vibePos={10},vibeNeg={11},vibeNeut={12},sentiment={13},team={14},player={15}\n'.format(record['TIMESTAMP'],record['USER_UTC_OFFSET'],record['LOCATION'],record['LATITUDE'],record['LONGITUDE'],record['USER_LANG'],record['USER_FOLLOWERS_COUNT'],record['USER_STATUSES_COUNT'],record['DRECONTENT'],record['TOPIC'],record['POSITIVE_VIBE'],record['NEGATIVE_VIBE'],record['NEUTRAL_VIBE'],record['SENTIMENT'],record['TEAM'],record['PLAYER'])
+    return record
+    #return 'timestamp={0},utcOffset={1},location={2},lat={3},lon={4},lang={5},numberFollowers={6},numberStatuses={7},text={8},topic={9},vibePos={10},vibeNeg={11},vibeNeut={12},sentiment={13},team={14},player={15}\n'.format(record['TIMESTAMP'],record['USER_UTC_OFFSET'],record['LOCATION'],record['LATITUDE'],record['LONGITUDE'],record['USER_LANG'],record['USER_FOLLOWERS_COUNT'],record['USER_STATUSES_COUNT'],record['DRECONTENT'],record['TOPIC'],record['POSITIVE_VIBE'],record['NEGATIVE_VIBE'],record['NEUTRAL_VIBE'],record['SENTIMENT'],record['TEAM'],record['PLAYER'])

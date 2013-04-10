@@ -11,6 +11,8 @@
 import sys
 import re
 import formatter
+import generator
+
 class IDX(object):
     def __init__(self,reference):
         self.reference = reference
@@ -41,6 +43,9 @@ def parseIDX():
     in_content = False
     content = None
     iCount=0
+	
+    csv = generator.CSV("output.csv")
+	
     for line in sys.stdin:        
         m = enddoc_pattern.match(line)
         if m:
@@ -48,7 +53,8 @@ def parseIDX():
             curr_doc.content = content
             in_content = False
             content = ""
-            print formatter.format(curr_doc),
+            #print formatter.format(curr_doc),
+            csv(formatter.format(curr_doc))
             iCount+=1
             curr_doc = None
             continue
@@ -87,6 +93,6 @@ def parseIDX():
             in_content = True
             content = ""
             continue
-
+    csv.flush();
 if __name__ == '__main__':
     parseIDX()
