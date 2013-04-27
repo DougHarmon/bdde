@@ -16,7 +16,7 @@ class FNParserGoogle:
     def __init__(self,sSymbol):
         self.__sSymbol=sSymbol
     def recNormalized(self,prevDTS,iNoInt,iInt,iPriceH,iPriceL):
-        dts = float(prevDTS) + float(iNoInt) * float(iInt)
+        dts = float(prevDTS) + float(iNoInt) * float(iInt)+10800
         ds = datetime.fromtimestamp(float(dts)).strftime("%Y-%m-%d")
         ts = datetime.fromtimestamp(float(dts)).strftime("%H:%M:%S")
         return FNStockPrice(ds,ts,self.__sSymbol,iPriceH,iPriceL)
