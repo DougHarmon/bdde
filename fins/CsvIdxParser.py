@@ -30,7 +30,7 @@ class CsvIdxParser:
                     sVal=sVal+arrElements[mapping]
                 sVal=self.formatVal(sVal,tupMap[3])
                 if tupMap[0]=="":
-                    sField="#"+tupMap[1]+" "+sVal+"\n";
+                    sField="#"+tupMap[1]+sVal+"\n";
                 else:
     				sField="#"+tupMap[0]+' '+tupMap[1]+'="'+sVal+'"'+"\n";
                 sIDX=sIDX+sField;

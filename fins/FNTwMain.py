@@ -14,9 +14,8 @@ import time
 from FileWritter import FileWritter
 
 class FNTwitterMain:
-    __mapping=[("","DREREFERENCE",{0,1},""),
+    __mapping=[("","DREREFERENCE ",{0,1},""),
              ("DREFIELD","PROCESS_STATUS",{2},""),
-             ("DREFIELD","REVIEW_TEXT",{3},""),
              ("DREFIELD","ISO_LANG_CODE",{4},""),
              ("DREFIELD","CREATED_ON",{5},""),
              ("DREFIELD","LOCATION",{6},""),
@@ -24,7 +23,8 @@ class FNTwitterMain:
              ("DREFIELD","GEO_LONG",{8},""),
              ("DREFIELD","AUTHOR_NAME",{9},""),
              ("DREFIELD","SCORE",{10},""),
-            ("DREFIELD","STOCK",{11},"trim")]
+            ("DREFIELD","STOCK",{11},"trim"),
+            ("","DRECONTENT\n",{3},""),]
     __sDel="\t"
     __bHeader=False
     __iLenValidator=12
