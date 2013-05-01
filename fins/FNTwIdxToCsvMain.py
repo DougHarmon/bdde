@@ -11,7 +11,6 @@
 import sys
 from IDXParser import IDXParser
 from FNTwFormatter import FNTwFormatter
-from VerticaWritter import VerticaWritter
 
 class FNWritter:
     def write(self,sData):
