@@ -35,7 +35,7 @@ class FNWebFormatter:
         record = dict([])
         sData=""
         arrFields=[('DREREFERENCE','','doc'),
-                    ('SPIDERDATE','EPOCH',''),
+                    ('DREDATE','EPOCH','doc'),
                     ('STOCK_TICKER','',''),
                     ('ISO_LANGUAGE_CODE','',''),
                     ('KEYWORDS','',''),
