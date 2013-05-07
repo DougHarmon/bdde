@@ -9,67 +9,31 @@
 #-------------------------------------------------------------------------------
 #!/usr/bin/env python
 from datetime import datetime
+from FNFormatter import FNFormatter
 import re
-class FNTwFormatter:
-    def formatData(self,sFormat,sData):
-        newData=""
-        if sData!="":
-            if sFormat=="DSTZ":
-                #DREFIELD TWITTER_CREATED_AT="Mon, 25 Mar 2013 13:05:52 +0000"
-                arrDate=sData.split(' ')
-                if len(arrDate)>5:
-                    dt = datetime.strptime(arrDate[0]+" "+arrDate[1]+" "+arrDate[2]+" "+arrDate[3]+" "+arrDate[4], '%a, %d %b %Y %H:%M:%S')
-                    newData = "{0}-{1:02d}-{2:02d} {3:02d}:{4:02d}:{5:02d}.0".format(dt.year,dt.month,dt.day,dt.hour,dt.minute,dt.second)
-            if sFormat=="DTZ":
-                arrDate=sData.split(' ')
-                if len(arrDate)>1:
-                    #2013-03-25 13:05:52 +0000 -.rstrip("0")
-                    newData =arrDate[0]+" "+arrDate[1]+".0"
-            if sFormat=="DSLASH":
-                newData=sData.replace("/","-")
-        return newData
+class FNTwFormatter(FNFormatter):
     def format(self,doc):
-        record = dict([])
-        sData=""
-        arrFields=[('DREREFERENCE','','doc'),
-                    ('PROCESS_STATUS','',''),
-                    ('DRECONTENT','','doc'),
-                    ('ISO_LANG_CODE','',''),
-                    ('CREATED_ON','DSLASH',''),
-                    ('LOCATION','',''),
-                    ('GEO_LAT','',''),
-                    ('GEO_LONG','',''),
-                    ('AUTHOR_NAME','',''),
-                    ('SCORE','',''),
-                    ('STOCK','',''),
-                    ('EDKCOMPANY','',''),
-                    ('EDKPERSON','',''),
-                    ('EDKPLACE','',''),
-                    ('SENTIMENT_NEG','',''),
-                    ('SENTIMENT_POS','',''),
-                    ('SENTIMENT','','')]
-
-
-        for tupField in arrFields:
-            sTemp=""
-            if tupField[2] =="":
-                if tupField[0] in doc.fields:
-                    sTemp=self.cleanData(doc.fields[tupField[0]])
-            elif tupField[2] =="doc":
-                if tupField[0] in doc.desc:
-                    sTemp=self.cleanData(doc.desc[tupField[0]])
-            elif tupField[2] =="${DRECONTENT}":
-                    sTemp=self.cleanData(doc.desc['DRECONTENT'])
-
-            if tupField[1] !="":
-                sTemp=self.formatData(tupField[1],sTemp)
-            sData=sData+sTemp+"|"
-        return sData[:-1]
-
-    def cleanData(self,sData):
-            sData=sData.replace("\\n", "")
-            sData=sData.replace("\n", "")
-            sData=sData.replace("\r", "")
-            sData=sData.replace("\\r", "")
-            sData=sData.replace("|", "$")
-            return sData
+        arrFields=[('DREREFERENCE','','doc',0),
+                    ('PROCESS_STATUS','','',1),
+                    ('DRECONTENT','','doc',1),
+                    ('ISO_LANG_CODE','','',1),
+                    ('CREATED_ON','DSLASH','',1),
+                    ('LOCATION','','',1),
+                    ('GEO_LAT','','',1),
+                    ('GEO_LONG','','',1),
+                    ('AUTHOR_NAME','','',1),
+                    ('SCORE','','',1),
+                    ('STOCK','','',1),
+                    ('EDKCOMPANY','','',1),
+                    ('EDKPERSON','','',1),
+                    ('EDKPLACE','','',1),
+                    ('SENTIMENT_NEG','','',1),
+                    ('SENTIMENT_POS','','',1),
+                    ('SENTIMENT','','',1),
+                    ('STOCK_TICKER','','',2),
+                    ('SENTIMENT_NEG','','',2),
+                    ('SENTIMENT_POS','','',2),
+                    ('EDKCOMPANY','','',2),
+                    ('EDKPERSON','','',2),
+                    ('EDKPLACE','','',2)]
+        return FNFormatter.format(self,doc,arrFields,"tweets")

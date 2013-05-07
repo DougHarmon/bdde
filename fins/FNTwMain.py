@@ -1,12 +1,11 @@
 #-------------------------------------------------------------------------------
-# Name:        Alan del Rio Mendez
+# Name:        Finance Twitter Parser
 # Purpose:     Configure and Trigger Twitter CSV to IDX Parsing
 #
-# Author:      hpadmin
+# Author:      Alan del Rio
 #
 # Created:     28/04/2013
-# Copyright:   (c) hpadmin 2013
-# Licence:     <your licence>
+# Copyright:   (c) Hewlett Packard
 #-------------------------------------------------------------------------------
 from CsvIdxParser import CsvIdxParser
 import sys

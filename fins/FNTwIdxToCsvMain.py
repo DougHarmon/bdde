@@ -1,16 +1,16 @@
 #-------------------------------------------------------------------------------
-# Name:        module1
-# Purpose:
+# Name:        Twitter IDX to CSV
+# Purpose:     Parse IDX generated from tweets to generate a CSV equivalent
 #
-# Author:      hpadmin
+# Author:      Alan del Rio - alan.delrio@hp.com
 #
 # Created:     29/04/2013
-# Copyright:   (c) hpadmin 2013
-# Licence:     <your licence>
+# Copyright:   (c) Hewlett Packard - IMA
 #-------------------------------------------------------------------------------
 import sys
 from IDXParser import IDXParser
 from FNTwFormatter import FNTwFormatter
+from VerticaWritter import VerticaWritter
 
 class FNWritter:
     def write(self,sData):

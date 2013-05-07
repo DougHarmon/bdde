@@ -14,7 +14,7 @@ import re
 class IDX(object):
     def __init__(self,reference):
         self.reference = reference
-        self.fields = dict([])
+        self.fields = dict()
         self.desc = dict([])
 
 class IDXParser:
@@ -57,10 +57,10 @@ class IDXParser:
                 continue
             m = field_pattern.match(line)
             if m:
-                tmp = m.group(1)
-                while (tmp in curr_doc.fields):
-                    tmp = tmp + '1'
-                curr_doc.fields[tmp] = m.group(2)
+                if m.group(1) in curr_doc.fields:
+                    curr_doc.fields[m.group(1)].append(m.group(2))
+                else:
+                    curr_doc.fields[m.group(1)]=[m.group(2)]
                 continue
             m = title_pattern.match(line)
             if m:
