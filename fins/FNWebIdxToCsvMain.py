@@ -10,7 +10,6 @@
 import sys
 from IDXParser import IDXParser
 from FNWebFormatter import FNWebFormatter
-from VerticaWritter import VerticaWritter
 
 class FNWritter:
     def write(self,sData):
